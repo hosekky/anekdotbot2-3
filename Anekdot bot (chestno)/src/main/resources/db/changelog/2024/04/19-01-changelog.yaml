@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1713523559401-1
+      author: Denis (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_joke_visitor
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: joke_id
+                  type: BIGINT
+              - column:
+                  name: date
+                  type: DATETIME
+            tableName: joke_visitor
+  - changeSet:
+      id: 1713523559401-2
+      author: Denis (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_jokes
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: text
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: updated_at
+                  type: DATETIME
+            tableName: jokes
+  - changeSet:
+      id: 1713523559401-3
+      author: Denis (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: joke_id
+            baseTableName: joke_visitor
+            constraintName: FK_JOKE_VISITOR_ON_JOKE
+            referencedColumnNames: id
+            referencedTableName: jokes
+
